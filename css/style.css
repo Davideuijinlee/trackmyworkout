@@ -1,0 +1,16 @@
+.titleFont{
+    font-family: 'Special Elite', cursive;
+}
+
+.statsContainer{
+    height:20%;
+}
+
+
+/* exercise bar */
+
+.exerciseForm{
+    height:100vh;
+    background-color: #eee;
+}
+

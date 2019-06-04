@@ -1,0 +1,16 @@
+{
+  "name": "server.js",
+  "version": "1.0.0",
+  "description": "my first web server for SGT",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "David",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  }
+}
