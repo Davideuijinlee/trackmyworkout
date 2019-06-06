@@ -1,5 +1,5 @@
 class Exercise{
-    constructor(id, date, exercise, sets, reps, weight, updateExercise=()=>{}, deleteExercise=()=>{}){
+    constructor(id, date, exercise, sets, reps, weight, rest, updateExercise=()=>{}, deleteExercise=()=>{}){
         this.data = {
             id,
             date,
@@ -20,37 +20,35 @@ class Exercise{
 			sets: null,
 			reps: null,
             weight: null,
-            rest,
-            options: {
-                updateButton: null,
-                deleteButton: null
-            }
+            rest: null,
+            options: null,
 		}
     }
 
     render(){
         const {date, exercise, sets, reps, weight, rest} = this.data;
-        const date = $('<td>').text(date);
-        const exercise = $('<td>').text(exercise);
-        const sets = $('<td>').text(sets);
-        const reps = $('<td>').text(reps);
-        const weight = $('<td>').text(weight);
-        const rest = $('<td>').text(rest);
-        const tableRow = $('<tr>').append(date, exercise, sets, reps, weight, rest);
+        const dateElement = $('<td>').text(date);
+        const exerciseElement = $('<td>').text(exercise);
+        const setsElement = $('<td>').text(sets);
+        const repsElement = $('<td>').text(reps);
+        const weightElement = $('<td>').text(weight);
+        const restElement = $('<td>').text(rest);
+        const updateButton = $('<button>').text('update').on('click', this.handleDelete);
+		const deleteButton = $('<button>').text('delete').on('click', this.handleDelete);
+        const optionsElements = $('<td>').append(updateButton, deleteButton);
+        const tableRow = $('<tr>').append(dateElement, exerciseElement, setsElement, repsElement, weightElement, restElement, optionsElements);
 
         this.domElements = {
 			row: tableRow,
-			date,
-			exercise,
-			sets,
-			reps,
-            weight,
-            rest,
-            options: {
-                updateButton,
-                deleteButton
-            }
-		}
+			date: dateElement,
+			exercise: exerciseElement,
+			sets: setsElement,
+			reps: repsElement,
+            weight: weightElement,
+            rest: restElement,
+            options: optionsElements
+        }
+        return this.domElements.row;
     }
     handleDelete(){
 		this.deleteCallback(this.data.id);

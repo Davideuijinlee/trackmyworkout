@@ -1,13 +1,22 @@
 {
   "name": "server.js",
   "version": "1.0.0",
-  "description": "my first web server for SGT",
+  "description": "Track My Workout",
   "main": "server.js",
+  "proxy": {
+    "/api/*": {
+      "target": "http://localhost:1005"
+    }
+  },
   "scripts": {
-    "test": "node server.js"
+    "test": "PHP server.js"
   },
   "author": "David",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Davideuijinlee/trackmyworkout.git"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.16.4",
