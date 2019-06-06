@@ -14,3 +14,29 @@
     background-color: #eee;
 }
 
+
+/* table */
+.tableContainer{
+    padding: 0;
+}
+
+.tableHeader{
+    text-align: left;
+    padding: 0;
+    border-bottom: 1px solid #eee;
+}
+
+tr:nth-child(even){
+    background-color: #eee
+}
+
+
+/* Media Query Exercise Bar */
+
+@media only screen 
+    and (max-device-width: 500px){ 
+        .exerciseForm{
+            height:100%;
+            background-color: #eee;
+        }
+    }
