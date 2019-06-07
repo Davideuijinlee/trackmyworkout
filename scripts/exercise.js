@@ -50,8 +50,9 @@ class Exercise{
         }
         return this.domElements.row;
     }
-    handleDelete(){
-		this.deleteCallback(this.data.id);
+    handleDelete=()=>{
+        console.log(this.data);
+		this.deleteExercise(this.data.id);
 		this.domElements.row.remove();
 	}
 }

@@ -1,26 +1,23 @@
 <?php
-    require_once('functions.php');
-    require_once('config.php');
-    require_once('mysqlconnect.php');
-    set_exception_handler('handleError');
-
-    $json_input = file_get_contents("php://input");
-    $input = json_decode($json_input, true);
+require_once('functions.php');
+require_once('config.php');
+require_once('mysqlconnect.php');
+set_exception_handler('handleError');
 
     $output = [
         'success'=> false,
     ];
 
-    $exercise = $input['exercise'];
-    $sets = (int)$input['sets'];
-    $reps = (int)$input['reps'];
-    $weight = (int)$input['weight'];
-    $rest = (int)$input['rest'];
+    $exercise = $_POST['exercise'];
+    $sets = (int)$_POST['sets'];
+    $reps = (int)$_POST['reps'];
+    $weight = (int)$_POST['weight'];
+    $rest = (int)$_POST['rest'];
 
     $addExerciseQuery = "INSERT INTO `exercises` 
         (`exercise`, `sets`, `reps`, `weight`, `rest`)
         VALUES
-        ($exercise, $sets, $reps, $weight, $rest)";
+        ('$exercise', $sets, $reps, $weight, $rest)";
 
     $exerciseResult = mysqli_query($conn, $addExerciseQuery);
 

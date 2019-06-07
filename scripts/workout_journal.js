@@ -3,12 +3,14 @@ class workoutJournal{
 	constructor(elementConfig){
 		this.data = {};
 		this.elementConfig = elementConfig;
-		this.studentName = null;
-		this.studentCourse = null;
-		this.studentGrade = null;
+		this.exerciseName = null;
+		this.exerciseSets = null;
+		this.exerciseReps = null;
+		this.exerciseWeight = null;
+		this.exerciseRest = null;
 		this.handleAdd = this.handleAdd.bind(this);
 		this.handleCancel = this.handleCancel.bind(this);
-		this.deleteStudent = this.deleteStudent.bind(this);
+		this.deleteExercise = this.deleteExercise.bind(this);
 		this.getDataFromServer = this.getDataFromServer.bind(this);
 		this.sendDataToServer = this.sendDataToServer.bind(this);
 		this.handleDataSuccess = this.handleDataSuccess.bind(this);
@@ -17,35 +19,25 @@ class workoutJournal{
 
 	addEventHandlers(){
 		const {addButton, cancelButton, updateButton} = this.elementConfig;
-		$(addButton).on('click', this.handleAdd);
-		$(updateButton).on('click', this.handleUpdate);
-		$(cancelButton).on('click', this.handleCancel);
+		addButton.on('click', this.handleAdd);
+		updateButton.on('click', this.handleUpdate);
+		cancelButton.on('click', this.handleCancel);
 	}
-	/* clearInputs - take the three inputs stored in our constructor and clear their values
-	params: none
-	return: undefined
-	ESTIMATED TIME: 15 minutes
-	*/
+
 	clearInputs(){
-		$(this.elementConfig.nameInput).val('');
-		$(this.elementConfig.courseInput).val('');
-		$(this.elementConfig.gradeInput).val('');
+		$(this.elementConfig.exerciseInput).val('');
+		$(this.elementConfig.setInput).val('');
+		$(this.elementConfig.repInput).val('');
+		$(this.elementConfig.weightInput).val('');
+		$(this.elementConfig.restInput).val('');
 	}
-	/* handleCancel - function to handle the cancel button press
-	params: none
-	return: undefined
-	ESTIMATED TIME: 15 minutes
-	*/
+
 	handleCancel(){
 		this.clearInputs();
 	}
-	/* handleAdd - function to handle the add button click
-	purpose: grabs values from inputs, utilizes the model's add method to save them, then clears the inputs and displays all students
-	params: none
-	return: undefined
-	ESTIMATED TIME: 1 hour
-	*/
+
 	handleAdd(){
+		console.log('clicked')
 		const {exerciseInput, setInput, repInput, weightInput, restInput} = this.elementConfig;
 		this.exerciseName = exerciseInput.val();
 		this.exerciseSets = setInput.val();
@@ -53,37 +45,16 @@ class workoutJournal{
 		this.exerciseWeight = weightInput.val();
 		this.exerciseRest = restInput.val();
 		this.createExerciseForm(this.exerciseName, this.exerciseSets, this.exerciseReps, this.exerciseWeight, this.exerciseRest);
-		
-		// this.displayAllStudents();
 	}
-	/* displayAllStudents - iterate through all students in the model
-	purpose: 
-		grab all students from model, 
-		iterate through the retrieved list, 
-		then render every student's dom element
-		then append every student to the dom's display area
-		then display the grade average
-	params: none
-	return: undefined
-	ESTIMATED TIME: 1.5 hours
-	*/
+
 	displayAllExercises(){
 		$('#displayArea').empty();
 		for (let id in this.data) {
-			console.log('render display', this.data);
 			let exerciseRow = this.data[id].render();
-			console.log('exerciseRow', exerciseRow);
 			$('#displayArea').append(exerciseRow);
 		}
-		// this.displayAverage();
 	}
-	/* displayAverage - get the grade average and display it
-	purpose: grab the average grade from the model, and show it on the dom
-	params: none
-	return: undefined 
-	ESTIMATED TIME: 15 minutes
 
-	*/
 
 // 	displayAverage(){
  
@@ -98,20 +69,18 @@ class workoutJournal{
 // 	$('.avgGrade').text(gradeAverage.toFixed(2));
 // }
 
-	createExerciseForm(date, exercise, sets, reps, weight, rest){
+	createExerciseForm(exercise, sets, reps, weight, rest){
 		this.sendDataToServer(exercise, sets, reps, weight, rest);
 	}
 
 	createExercise(id, date, exercise, sets, reps, weight, rest){
-		// debugger;
 		if(date && exercise && sets && reps && weight && rest){
 			const exerciseElement = new Exercise(id, date, exercise, sets, reps, weight, rest, this.DeleteDatatoServer, this.DeleteDatatoServer);
 			this.data[id] = exerciseElement;
-			console.log('data', this.data)
 		}
 	}
 
-	doesStudentExist(id){
+	doesExerciseExist(id){
 		if(this.data.hasOwnProperty(id) === true){
 			return true;
 		}
@@ -167,8 +136,8 @@ class workoutJournal{
 		true if it was successful, false if not
 		ESTIMATED TIME: 30 minutes
 	*/
-	deleteStudent(id){
-		if(this.doesStudentExist(id)){
+	deleteExercise(id){
+		if(this.doesExerciseExist(id)){
 			delete this.data[id];
 			return true;
 		} else{
@@ -182,7 +151,6 @@ class workoutJournal{
 			dataType: 'json',
 			method: 'get',
 			success: function(response){
-				console.log('ajax response', response);
 				for (let index in response){
 					journal.createExercise(
 						response[index].id,
@@ -198,16 +166,19 @@ class workoutJournal{
 		});
 	}
 
-	sendDataToServer(name, course, grade){
+	sendDataToServer(exercise, sets, reps, weight, rest){
+		
+		console.log('send data', exercise, sets, reps, weight, rest)
 		$.ajax({
-			url: 'api/grades',
+			url: 'public/api/add_exercise.php',
 			dataType: 'json',
 			method: 'post',
 			data: {
-				'api_key': 'ygZe9pkcvR',
-				'name': name,
-				'course': course,
-				'grade': grade,
+				exercise,
+				sets,
+				reps,
+				weight,
+				rest
 			},
 			success: this.handleDataSuccess,
 			})
@@ -222,10 +193,14 @@ class workoutJournal{
 	}
 
 	DeleteDatatoServer(id){
+		console.log('id', id)
 		$.ajax({
-			url: 'api/grades?student_id=' + id,
+			url: 'public/api/delete_exercise.php',
 			dataType: 'json',
-			method: 'delete',
+			method: 'post',
+			data:{
+				id
+			},
 			success: function(){
 				this.getDataFromServer();
 				return true;
