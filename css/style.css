@@ -89,7 +89,7 @@ body {
 /* calendar */
 .dateTimeContainer{
     position: absolute;
-    bottom: 0;
+    bottom: 20%;
     left: 0;
     /* padding: 0; */
 }
@@ -100,19 +100,29 @@ body {
 .wordDate{
     text-align: center;
 }
+.btn_question{
+    color:white;
+    margin-top:0;
+    text-align: center;
+    font-size:2rem;
+}
+
+.btn_question:hover{
+    color:red;
+}
 
 .instructions, .instructions2{
     text-align: center;
     margin-bottom:3%;
 }
-.instructions2{
-    margin-bottom:10%;
-}
+
 
 .dateCancel{
     padding: 0;
-
+    text-align: center;
 }
+
+
 
 .refreshBtn{
     color: white;
@@ -193,6 +203,15 @@ only screen and (max-width: 760px),
     .statsContainer {
         height: 5px;
     }
+    .input-group[class*=col-]{
+        float: left;
+    }
+    .dateTimeContainer{
+        position: relative;
+        bottom: 0;
+        left: 0;
+        /* padding: 0; */
+    }
 }
 @media only screen 
   and (min-device-width: 480px) 
@@ -216,14 +235,119 @@ only screen and (max-width: 760px),
 
     .form-group{
         margin-bottom: 10px;
+        z-index:10;
     }
-    
+
+    .dateTimeContainer{
+        position: absolute;
+        bottom: 0px;
+
+        left: 0;
+        /* padding: 0; */
+    }
+
     .tableFit{
         width:70%;
         left:30%;
-        position:relative;
     }
     .inputSize {
         font-size: 1rem;
     }
 }
+@media only screen 
+  and (min-device-width: 812px) 
+  and (max-device-width: 812px) 
+  and (orientation: landscape) { 
+    .dateTimeContainer{
+        position: absolute;
+        bottom: -25px;
+        left: 0;
+        /* padding: 0; */
+    }
+    .tableFit{
+        width:70%;
+        left:30%;
+    }
+  }
+  @media only screen 
+  and (min-device-width: 1024px) 
+  and (max-device-width: 1024px) 
+  { 
+    .dateTimeContainer{
+        position: absolute;
+        bottom: 2   0%;
+        left: 0;
+    }
+    .tableFit{
+        width:75%;
+        /* left:30%; */
+    }
+  }
+
+  @media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 768px) 
+  { 
+    .dateTimeContainer{
+        position: relative;
+        /* padding: 0; */
+    }
+    .tableFit{
+        width:75%;
+        /* left:30%; */
+    }
+  }
+
+  @media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 768px) 
+  and (orientation: portrait) { 
+    .dateTimeContainer{
+        position: absolute;
+        bottom: -25px;
+        left: 0;
+        /* padding: 0; */
+    }
+    .tableFit{
+        width:75%;
+        left:25%;
+    }
+  }
+  @media only screen 
+  and (min-device-width: 568px) 
+  and (max-device-width: 568px) 
+  and (orientation: landscape) { 
+    .dateTimeContainer{
+        display:none;
+    }
+    .tableFit{
+        width:75%;
+        left:25%;
+    }
+  }
+  @media only screen 
+  and (min-device-width: 640px) 
+  and (max-device-width: 640px) 
+  and (orientation: landscape) { 
+    .dateTimeContainer{
+        display:none;
+    }
+    .tableFit{
+        width:70%;
+        left:30%;
+    }
+  }
+  @media only screen 
+  and (min-device-width: 480px) 
+  and (max-device-width: 480px) 
+  and (orientation: landscape) { 
+    .dateTimeContainer{
+        display:none;
+    }
+    .tableFit{
+        width:70%;
+        left:30%;
+    }
+  }
+
+
