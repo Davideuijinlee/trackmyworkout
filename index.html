@@ -2,9 +2,14 @@
 <html>
 
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js">
+    </script>
     <script type="text/javascript" src="scripts/exercise.js"></script>
     <script type="text/javascript" src="scripts/workout_journal.js"></script>
     <script src="scripts/script.js"></script>
@@ -14,50 +19,81 @@
 </head>
 
 <body>
-    <div class="exerciseForm col-lg-3 hidden-xs col-md-3 col-sm-3">
+    <div class="exerciseForm col-lg-3 col-xs-12 col-sm-3 col-md-3 col-sm-3">
         <div class="statsContainer col-lg-12">
         </div>
         <h4 class="text-center addSpace titleFont">Add Exercise</h4>
-        <div class="form-group input-group col-xs-12 col-lg-12">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-menu-down"> </span>
-            </span>
-            <input type="text" class="form-control form-rounded" name="exercise" id="exercise"
-                placeholder="Exercise">
+        <div class="formContainer">
+                <div class="form-group input-group col-xs-12 col-lg-12">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-menu-down"> </span>
+                        </span>
+                        <input type="text" class="form-control inputSize form-rounded" name="exercise" id="exercise"
+                            placeholder="Exercise">
+                    </div>
+                    <div class="form-group input-group col-xs-12 col-lg-12">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-stats"> </span>
+                        </span>
+                        <input type="number" min="1" max="1000" class="form-control inputSize form-rounded" name="sets" id="sets"
+                            placeholder="Sets">
+                    </div>
+                    <div class="form-group input-group col-xs-12 col-lg-12">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-stats		
+                            "> </span>
+                        </span>
+                        <input type="number" min="1" max="1000" class="form-control inputSize form-rounded" name="reps" id="reps"
+                            placeholder="Reps">
+                    </div>
+                    <div class="form-group input-group col-xs-12 col-lg-12">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-stats"> </span>
+                        </span>
+                        <input type="number" min="1" class="form-control inputSize form-rounded" name="weight" id="weight"
+                            placeholder="Weight (lbs)">
+                    </div>
+                    <div class="form-group input-group col-xs-12 col-lg-12">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-heart"> </span>
+                        </span>
+                        <input type="text" class="form-control inputSize form-rounded" name="rest" id="rest"
+                            placeholder="Rest (sec)">
+                    </div>
+                    <button type="button" class="col-xs-6 add btn btn-success" id="addButton">Add</button>
+                    <button type="button" class="col-xs-6 cancel btn btn-default" id="cancelButton">Cancel</button>
         </div>
-        <div class="form-group input-group col-xs-12 col-lg-12">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-stats"> </span>
-            </span>
-            <input type="number" min="1" max="1000" class="form-control form-rounded" name="sets" id="sets"
-                placeholder="Sets">
+        
+        <div class="dateTimeContainer col-lg-12">
+            <div class="instructions col-lg-12 titleFont">Please select a start and end date to view all your workouts within that timeframe.</div>
+            <br>
+            <div class="instructions2 col-lg-12 titleFont">You can view your workouts from a specific date by only selecting a start date.</div>
+            <div class="wordDate titleFont col-lg-5">Start Date</div>
+            <div class="wordDate titleFont col-lg-5 col-lg-offset-1">End Date</div>
+            <div class="col-lg-5 dateTimeCalendar">
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker6'>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        <input type='text' class="form-control" value="MM/DD/YYY"/>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-lg-offset-1 dateTimeCalendar">
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker7'>
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                        <input type='text' class="form-control" value="MM/DD/YYY"/>
+                    </div>
+                </div>
+            </div>
+            <div class="dateCancel col-lg-1"><i class="refreshBtn fa fa-refresh iconBtn btn_cancel"></i></div>
         </div>
-        <div class="form-group input-group col-xs-12 col-lg-12">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-stats		
-                "> </span>
-            </span>
-            <input type="number" min="1" max="1000" class="form-control form-rounded" name="reps" id="reps"
-                placeholder="Reps">
-        </div>
-        <div class="form-group input-group col-xs-12 col-lg-12">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-stats"> </span>
-            </span>
-            <input type="number" min="1" class="form-control form-rounded" name="weight" id="weight"
-                placeholder="Weight (lbs)">
-        </div>
-        <div class="form-group input-group col-xs-12 col-lg-12">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-heart"> </span>
-            </span>
-            <input type="text" class="form-control form-rounded" name="rest" id="rest"
-                placeholder="Rest">
-        </div>
-        <button type="button" class="col-xs-6 add btn btn-success" id="addButton">Add</button>
-        <button type="button" class="col-xs-6 cancel btn btn-default" id="cancelButton">Cancel</button>
     </div>
-    <div class="col-xs-12 col-lg-9 col-md-9 col-sm-9">
+    <div class="tableFit col-xs-12 col-md-offset-3 col-md-offset-3 col-sm-9 col-lg-9 col-md-9 col-sm-offset-3">
         <div class="page-header media-heading col-xs-12 col-lg-12">
             <h1 class="titleFont hidden-xs col-lg-12 text-center">Track My Workout
             </h1>
@@ -68,62 +104,19 @@
             <table class="titleFont col-xs-12 col-md-12 col-lg-12">
                 <thead>
                     <tr>
-                        <th class="col-xs-2 col-md-2 tableHeader">Date</th>
-                        <th class="col-xs-2 col-md-2 tableHeader">Exercise</th>
+                        <th class="col-xs-2 col-md-1 tableHeader">Date</th>
+                        <th class="col-xs-2 col-md-1 tableHeader">Exercise</th>
                         <th class="col-xs-2 col-md-1 tableHeader">Sets</th>
                         <th class="col-xs-2 col-md-1 tableHeader">Reps</th>
-                        <th class="col-xs-2 col-md-2 tableHeader">Weight</th>
-                        <th class="col-xs-2 col-md-2 tableHeader">Rest</th>
-                        <th class="col-xs-2 col-md-2 tableHeader">Options</th>
+                        <th class="col-xs-2 col-md-1 tableHeader">Weight (lbs)</th>
+                        <th class="col-xs-2 col-md-1 tableHeader">Rest (sec)</th>
+                        <th class="col-xs-2 col-md-1 tableHeader">Options</th>
                     </tr>
                 </thead>
                 <tbody id="displayArea">
                 </tbody>
             </table>
         </div>
-    </div>
-    <div class="exerciseForm col-xs-12 col-lg-3 hidden-md hidden-lg hidden-xl ">
-        <div class="statsContainer col-lg-12">
-        </div>
-        <h4 class="text-center addSpace titleFont">Add Exercise</h4>
-        <div class="form-group input-group col-xs-12 col-lg-12">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-menu-down"> </span>
-            </span>
-            <input type="text" class="form-control form-rounded" name="exercise" id="exercise"
-                placeholder="Exercise">
-        </div>
-        <div class="form-group input-group col-xs-12 col-lg-12">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-stats"> </span>
-            </span>
-            <input type="number" min="1" max="1000" class="form-control form-rounded" name="sets" id="sets"
-                placeholder="Sets">
-        </div>
-        <div class="form-group input-group col-xs-12 col-lg-12">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-stats		
-                "> </span>
-            </span>
-            <input type="number" min="1" max="1000" class="form-control form-rounded" name="reps" id="reps"
-                placeholder="Reps">
-        </div>
-        <div class="form-group input-group col-xs-12 col-lg-12">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-stats"> </span>
-            </span>
-            <input type="number" min="1" class="form-control form-rounded" name="weight" id="weight"
-                placeholder="Weight (lbs)">
-        </div>
-        <div class="form-group input-group col-xs-12 col-lg-12">
-            <span class="input-group-addon">
-                <span class="glyphicon glyphicon-heart"> </span>
-            </span>
-            <input type="text" class="form-control form-rounded" name="rest" id="rest"
-                placeholder="Rest">
-        </div>
-        <button type="button" class="col-xs-6 add btn btn-success" id="addButton">Add</button>
-        <button type="button" class="col-xs-6 cancel btn btn-default" id="cancelButton">Cancel</button>
     </div>
 </body>
 

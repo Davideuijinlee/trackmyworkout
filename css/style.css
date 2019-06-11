@@ -1,42 +1,225 @@
-.titleFont{
-    font-family: 'Special Elite', cursive;
+body {
+    background-color: black;
+    
 }
 
-.statsContainer{
-    height:20%;
+.titleFont {
+    font-family: 'Special Elite', cursive;
+    color: white;
 }
+
+.statsContainer {
+    height: 8%;
+}
+
+.formContainer{
+    height:auto;
+}
+
+
 
 
 /* exercise bar */
 
-.exerciseForm{
-    height:100vh;
-    background-color: #eee;
+.exerciseForm {
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+    background-color: #000000;
+    background-image: linear-gradient(315deg, rgb(33, 33, 33) 0%, #3d3f3f 74%);
 }
 
 
 /* table */
-.tableContainer{
+.tableContainer {
     padding: 0;
+
 }
 
-.tableHeader{
+.tableHeader {
     text-align: left;
     padding: 0;
     border-bottom: 1px solid #eee;
 }
 
-tr:nth-child(even){
-    background-color: #eee
+
+
+.tableHead {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    
 }
 
+.row_data {
+    overflow: hidden;
+    white-space: nowrap;
+    /* width: 100px; */
+}
 
+/* tr:nth-child(even){
+    background-color: #eee
+} */
+
+.iconBtn {
+    font-size: 2rem;
+    margin: 5px;
+}
+
+.updateBtn {
+    top: 2px;
+    position: relative;
+}
+
+.btn_save {
+    color: green
+}
+
+.btn_cancel {
+    margin-left: 7px;
+    color: red;
+}
+.btn_edit:hover{
+    color:green;
+}
+.btn_delete:hover{
+    color:red;
+}
+
+/* calendar */
+.dateTimeContainer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /* padding: 0; */
+}
+.dateTimeCalendar{
+    padding: 0;
+}
+
+.wordDate{
+    text-align: center;
+}
+
+.instructions, .instructions2{
+    text-align: center;
+    margin-bottom:3%;
+}
+.instructions2{
+    margin-bottom:10%;
+}
+
+.dateCancel{
+    padding: 0;
+
+}
+
+.refreshBtn{
+    color: white;
+    vertical-align: middle;
+}
+
+.refreshBtn:hover{
+    color: green;
+}
+
+/* media query tables
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+	
+	td:before { 
+		position: absolute;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Date"; }
+	td:nth-of-type(2):before { content: "Exercise"; }
+	td:nth-of-type(3):before { content: "Set"; }
+	td:nth-of-type(4):before { content: "Rep"; }
+	td:nth-of-type(5):before { content: "Weight"; }
+	td:nth-of-type(6):before { content: "Rest"; }
+    td:nth-of-type(7):before { content: "Options"; }
+    
+    tr:nth-child(even) {
+        background-color: #3f3e3e;
+    }
+} 
 /* Media Query Exercise Bar */
 
-@media only screen 
-    and (max-device-width: 500px){ 
-        .exerciseForm{
-            height:100%;
-            background-color: #eee;
-        }
+@media only screen and (max-device-width: 700px) {
+    .exerciseForm {
+        position:relative;
+        height: auto;
+        padding-bottom:10px;
+        top: 0;
+        background-image: linear-gradient(315deg, rgb(33, 33, 33) 0%, #3d3f3f 74%);
     }
+    .statsContainer {
+        height: 5px;
+    }
+}
+@media only screen 
+  and (min-device-width: 480px) 
+  and (max-device-width: 1000px) 
+  and (orientation: landscape) { 
+
+      .add, .cancel{
+    margin: 0 auto;
+    padding: 0;
+    display: inline-block;
+}
+    .exerciseForm {
+        font-size:.8rem;
+        height: 100%;
+        width:30%;
+        margin-bottom:20px;
+        top: 0;
+        position: fixed;
+        background-image: linear-gradient(315deg, rgb(33, 33, 33) 0%, #3d3f3f 74%);
+    }
+
+    .form-group{
+        margin-bottom: 10px;
+    }
+    
+    .tableFit{
+        width:70%;
+        left:30%;
+        position:relative;
+    }
+    .inputSize {
+        font-size: 1rem;
+    }
+}
