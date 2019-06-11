@@ -220,6 +220,34 @@ getSpecificDate = (date) => {
 	});
 }
 
+getDateRange = (startDate, endDate) => {
+	debugger;
+	this.data = {};
+	$.ajax({
+		url: 'public/api/get_date_range.php',
+		dataType: 'json',
+		method: 'get',
+		data: {
+			startDate,
+			endDate
+		},
+		success: function (response) {
+			for (let index in response) {
+				journal.createExercise(
+					response[index].id,
+					response[index].date,
+					response[index].exercise,
+					response[index].sets,
+					response[index].reps,
+					response[index].weight,
+					response[index].rest
+				)
+			};
+			journal.displayAllExercises();
+		}
+	});
+}
+
 sendDataToServer = (exercise, sets, reps, weight, rest) => {
 
 	$.ajax({
@@ -293,15 +321,32 @@ selectDate=()=>{
         $("#datetimepicker6").on("dp.change", function (e) {
 			$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
 			startDate = $("#datetimepicker6").find("input").val();
-			journal.getSpecificDate(startDate);
-			console.log(startDate);
+			console.log('end', endDate, 'start', startDate)
+			if(endDate){
+				journal.getDateRange(startDate, endDate);
+			} else{
+				journal.getSpecificDate(startDate);
+			}
 		});
 		
         $("#datetimepicker7").on("dp.change", function (e) {
+			// debugger;
 			$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
 			endDate = $("#datetimepicker7").find("input").val();
-			console.log('enddate', endDate);
-        });
+			console.log('end', endDate, 'start', startDate)
+			if(startDate){
+				journal.getDateRange(startDate, endDate);
+			}
+		});
+		
+		$('.refreshBtn').on('click', function(){
+			console.log('clicked')
+			$("#datetimepicker6").find("input").val('');
+			$("#datetimepicker7").find("input").val('');
+			startDate = '';
+			endDate = '';
+			console.log('end', endDate, 'start', startDate)
+			journal.getDataFromServer();
+		});
 }
-
 }
