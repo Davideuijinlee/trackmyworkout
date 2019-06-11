@@ -8,11 +8,15 @@ $output = [
     'success'=> false,
 ];
 
-$date=
+$timestamp = strtotime($_GET['startDate']);
+$startDate = date("Y-d-m", $timestamp);
+$timestamp = strtotime($_GET['endDate']);
+$endDate = date("Y-d-m", $timestamp);
 
 $query = "SELECT `id`, `date`, `exercise`, `sets`, `reps`, `weight`, `rest` FROM `exercises`
-    WHERE `date` = $date
-    ORDER BY `date` DESC";
+    WHERE  `date` >= '$startDate' 
+    AND `date` <= '$endDate'
+    ";
 
 $result = mysqli_query($conn, $query);
 
