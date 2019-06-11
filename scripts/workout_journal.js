@@ -318,8 +318,8 @@ selectDate=()=>{
 		
 		let startDate = '';
 		let endDate = '';
-        $("#datetimepicker6").on("dp.change", function (e) {
-			$('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        $('#datetimepicker6').on('dp.change', function (e) {
+			$('#datetimepicker7').data('DateTimePicker').minDate(e.date);
 			startDate = $("#datetimepicker6").find("input").val();
 			console.log('end', endDate, 'start', startDate)
 			if(endDate){
@@ -330,9 +330,8 @@ selectDate=()=>{
 		});
 		
         $("#datetimepicker7").on("dp.change", function (e) {
-			// debugger;
 			$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-			endDate = $("#datetimepicker7").find("input").val();
+			endDate = $("#datetimepicker7").find('input').val();
 			console.log('end', endDate, 'start', startDate)
 			if(startDate){
 				journal.getDateRange(startDate, endDate);
@@ -341,8 +340,8 @@ selectDate=()=>{
 		
 		$('.refreshBtn').on('click', function(){
 			console.log('clicked')
-			$("#datetimepicker6").find("input").val('');
-			$("#datetimepicker7").find("input").val('');
+			$("#datetimepicker6").find('input').val('');
+			$("#datetimepicker7").find('input').val('');
 			startDate = '';
 			endDate = '';
 			console.log('end', endDate, 'start', startDate)
