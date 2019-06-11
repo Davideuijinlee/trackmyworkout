@@ -89,7 +89,7 @@ body {
 /* calendar */
 .dateTimeContainer{
     position: absolute;
-    bottom: 20%;
+    bottom: 0;
     left: 0;
     /* padding: 0; */
 }
@@ -274,9 +274,27 @@ only screen and (max-width: 760px),
   and (max-device-width: 1024px) 
   { 
     .dateTimeContainer{
-        position: absolute;
-        bottom: 2   0%;
+        position: static;
+        bottom: 20%;
         left: 0;
+        padding: 0;
+    }
+    .tableFit{
+        width:75%;
+        /* left:30%; */
+    }
+  }
+  @media only screen 
+  and (min-device-width: 1366px) 
+  and (max-device-width: 1366px) 
+  and (orientation: landscape)
+  { 
+    .dateTimeContainer{
+        position: static;
+        margin-top:10%;
+        bottom: 30%;
+        left: 0;
+        padding: 0;
     }
     .tableFit{
         width:75%;
