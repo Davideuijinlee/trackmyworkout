@@ -39,6 +39,7 @@ class workoutJournal {
 	}
 
 	displayAllExercises() {
+
 		$('#displayArea').empty();
 		for (let id in this.data) {
 			let exerciseRow = this.data[id].render();
@@ -194,7 +195,7 @@ getDataFromServer = () => {
 }
 
 getSpecificDate = (date) => {
-	debugger;
+	this.data = {};
 	$.ajax({
 		url: 'public/api/get_specific_date.php',
 		dataType: 'json',
@@ -278,12 +279,12 @@ updateData = (id, date, exercise, sets, reps, weight, rest) => {
 
 selectDate=()=>{
 		$('#datetimepicker6').datetimepicker({
-			format: 'MM-DD-YY',
+			format: 'MM-DD-YYYY',
 			useCurrent: false, 
 		});
 		
         $('#datetimepicker7').datetimepicker({
-			format: 'MM-DD-YY',
+			format: 'MM-DD-YYYY',
 			useCurrent: false, 
 		});
 		

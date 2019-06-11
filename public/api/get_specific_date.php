@@ -9,11 +9,11 @@ $output = [
 ];
 
 $timestamp = strtotime($_GET['date']);
-$date = date("Y-m-d H:i:s", $timestamp);
+$date = date("Y-d-m H:i:s", $timestamp);
 
-$query = "SELECT `id`, `date`, `exercise`, `sets`, `reps`, `weight`, `rest` FROM `exercises`
-    WHERE `date` = $date
-    ORDER BY `date` DESC";
+$query = "SELECT `id`, `date`, `exercise`, `sets`, `reps`, `weight`, `rest` from `exercises` WHERE `date` = '$date'";
+
+
 
 $result = mysqli_query($conn, $query);
 
