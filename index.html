@@ -62,8 +62,7 @@
             </div>
             <button type="button" class="col-xs-6 add btn btn-success" id="addButton">Add</button>
             <button type="button" class="col-xs-6 cancel btn btn-default" id="cancelButton">Cancel</button>
-            <i class="fa fa-question-circle questionIcon" aria-hidden="true" data-toggle="modal"
-                data-target="#exampleModalCenter"></i>
+
             <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -80,20 +79,20 @@
                             <div class="instructions2 titleFont2">You can view your workouts from a specific date by
                                 only
                                 selecting a start date.</div>
-                                <div class="msgBtn">
-                                    <button type="button" data-dismiss="modal"
-                                    class="msgBtn btn btn-primary">Okay</button>
-                                </div>
-                            
+                            <div class="msgBtn">
+                                <button type="button" data-dismiss="modal" class="msgBtn btn btn-primary">Okay</button>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="dateTimeContainer col-sm-12 col-lg-12">
-
-                <div class="wordDate titleFont col-xs-6 col-lg-5">Start Date</div>
-                <div class="wordDate titleFont  col-xs-6 col-lg-5 col-lg-offset-1">End Date</div>
-                <div class="col-xs-5 col-sm-5 col-lg-5 dateTimeCalendar">
+            <div class="dateTimeContainer">
+                <div class="wordDate titleFont col-xs-5 col-sm-6 col-md-6 col-lg-5 ">Start Date <i
+                        class="fa fa-question-circle questionIcon hidden-xs hidden-sm" aria-hidden="true" data-toggle="modal"
+                        data-target="#exampleModalCenter"></i></div>
+                <div class="wordDate titleFont col-xs-5 col-xs-offset-1 col-sm-5 col-sm-offset-1 col-lg-5 col-lg-offset-2 col-md-5">End Date</div>
+                <div class="col-xs-6 col-lg-5 col-md-6 dateTimeCalendar">
                     <div class="form-group">
                         <div class='input-group date' id='datetimepicker6'>
                             <span class="input-group-addon">
@@ -104,7 +103,7 @@
                     </div>
                 </div>
                 <div
-                    class="col-xs-5 col-xs-offset-2 col-sm-5 col-sm-offset-2 col-lg-5 col-lg-offset-1 dateTimeCalendar">
+                    class="col-xs-6 col-lg-5 col-lg-offset-2 col-md-6 dateTimeCalendar">
                     <div class="form-group">
                         <div class='input-group date' id='datetimepicker7'>
                             <span class="input-group-addon">
@@ -114,7 +113,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="dateCancel col-lg-1"><i class="refreshBtn fa fa-refresh iconBtn "></i></div>
+                <!-- <div class="dateCancel col-lg-1"><i class="refreshBtn fa fa-refresh iconBtn "></i></div> -->
             </div>
         </div>
 
@@ -130,7 +129,7 @@
             <div class="tableContainer media-heading col-xs-12 col-md-12 col-lg-12">
                 <table class="titleFont col-xs-12 col-md-12 col-lg-12">
                     <thead class="stripes">
-                        <tr>
+                        <tr class="test">
                             <th class="col-xs-2 col-md-1 tableHeader">Date</th>
                             <th class="col-xs-2 col-md-1 tableHeader">Exercise</th>
                             <th class="col-xs-2 col-md-1 tableHeader">Sets</th>
