@@ -8,8 +8,9 @@ $output = [
     'success'=> false,
 ];
 
-$timestamp = strtotime($_GET['date']);
-$date = date("Y-d-m H:i:s", $timestamp);
+$timestamp = $_GET['date'];
+$date = date('Y-m-d', strtotime($timestamp));
+
 
 $query = "SELECT `id`, `date`, `exercise`, `sets`, `reps`, `weight`, `rest` from `exercises` WHERE `date` = '$date'";
 
