@@ -8,10 +8,11 @@ $output = [
     'success'=> false,
 ];
 
-$timestamp = strtotime($_GET['startDate']);
-$startDate = date("Y-d-m", $timestamp);
-$timestamp = strtotime($_GET['endDate']);
-$endDate = date("Y-d-m", $timestamp);
+
+$date1 = $_GET['startDate'];
+$startDate = date('Y-m-d', strtotime($date1));
+$date2 = $_GET['endDate'];
+$endDate = date('Y-m-d', strtotime($date2));
 
 $query = "SELECT `id`, `date`, `exercise`, `sets`, `reps`, `weight`, `rest` FROM `exercises`
     WHERE  `date` >= '$startDate' 

@@ -47,8 +47,8 @@ class Exercise{
         const saveButton = $('<i>').attr('row_id', id).addClass('fa fa-save iconBtn btn_save').on('click', this.handleSave).hide();
         const cancelButton = $('<i>').attr('row_id', id).addClass('fa fa-times iconBtn btn_cancel').on('click', this.cancelUpdate).hide();
 		const deleteButton = $('<i>').addClass('fa fa-trash iconBtn btn_delete').on('click', this.handleDelete);
-        const optionsElements = $('<td>').append(updateButton, saveButton, deleteButton, cancelButton);
-        const tableRow = $('<tr>').attr('row_id', id).append(dateElement, exerciseElement, setsElement, repsElement, weightElement, restElement, optionsElements);
+        const optionsElements = $('<td>').append(updateButton, saveButton, deleteButton, cancelButton).addClass('tdContainer');;
+        const tableRow = $('<tr>').attr('row_id', id).addClass('rowClass').append(dateElement, exerciseElement, setsElement, repsElement, weightElement, restElement, optionsElements);
 
         this.domElements = {
 			row: tableRow,

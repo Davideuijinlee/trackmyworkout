@@ -73,12 +73,12 @@ class workoutJournal {
 			tbl_row.find('.btn_delete').show();
 
 			tbl_row.find('.row_data')
-				.attr('contenteditable', 'false')
 				.attr('edit_type', 'click')
+				.attr('contenteditable', 'false')
 				.css({
 					'padding': '',
 					'border-right': 'none',
-					'background-color': 'black'
+					'background-color': ''
 				})
 
 			tbl_row.find('.row_data').each(function (index, val) {
@@ -105,7 +105,8 @@ class workoutJournal {
 				.attr('contenteditable', 'false')
 				.css({
 					'padding': '',
-					'border-right': 'none'
+					'border-right': 'none',
+					'background-color': 'none'
 				})
 			$(this).closest('div').attr('contenteditable', 'false')
 
@@ -141,7 +142,6 @@ class workoutJournal {
 			tbl_row.find('.row_data')
 				.attr('contenteditable', 'true')
 				.attr('edit_type', 'button')
-				// .addClass('bg-warning')
 				.css({
 					'background-color': '#3d3f3f',
 					'padding': '3px',
@@ -155,22 +155,7 @@ class workoutJournal {
 	});
 }
 
-doesExerciseExist(id) {
-	if (this.data.hasOwnProperty(id) === true) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
 
-deleteExercise = (id) => {
-	if (this.doesExerciseExist(id)) {
-		return true;
-	} else {
-		return false;
-	}
-}
 
 getDataFromServer = () => {
 	$.ajax({
@@ -221,7 +206,6 @@ getSpecificDate = (date) => {
 }
 
 getDateRange = (startDate, endDate) => {
-	debugger;
 	this.data = {};
 	$.ajax({
 		url: 'public/api/get_date_range.php',
@@ -307,12 +291,12 @@ updateData = (id, date, exercise, sets, reps, weight, rest) => {
 
 selectDate=()=>{
 		$('#datetimepicker6').datetimepicker({
-			format: 'MM-DD-YYYY',
+			format: 'MM/DD/YYYY',
 			useCurrent: false, 
 		});
 		
         $('#datetimepicker7').datetimepicker({
-			format: 'MM-DD-YYYY',
+			format: 'MM/DD/YYYY',
 			useCurrent: false, 
 		});
 		
@@ -321,10 +305,9 @@ selectDate=()=>{
         $('#datetimepicker6').on('dp.change', function (e) {
 			$('#datetimepicker7').data('DateTimePicker').minDate(e.date);
 			startDate = $("#datetimepicker6").find("input").val();
-			console.log('end', endDate, 'start', startDate)
-			if(endDate){
+			if(startDate && endDate){
 				journal.getDateRange(startDate, endDate);
-			} else{
+			} else if(startDate && !endDate){
 				journal.getSpecificDate(startDate);
 			}
 		});
@@ -339,7 +322,6 @@ selectDate=()=>{
 		});
 		
 		$('.refreshBtn').on('click', function(){
-			console.log('clicked')
 			$("#datetimepicker6").find('input').val('');
 			$("#datetimepicker7").find('input').val('');
 			startDate = '';

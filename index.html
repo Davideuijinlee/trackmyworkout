@@ -17,6 +17,7 @@
     <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
     <meta name="viewport" content="initial-scale=1, user-scalable=no">
 </head>
+
 <body>
     <div class="exerciseForm col-lg-3 col-xs-12 col-sm-3 col-md-3 col-sm-3">
         <div class="statsContainer col-lg-12">
@@ -61,39 +62,63 @@
             </div>
             <button type="button" class="col-xs-6 add btn btn-success" id="addButton">Add</button>
             <button type="button" class="col-xs-6 cancel btn btn-default" id="cancelButton">Cancel</button>
-        </div>
-        
-        <div class="dateTimeContainer col-sm-12 col-lg-12">
-            <div class="instructions  hidden-xs hidden-sm hidden-md col-lg-12 titleFont">Please select a start and end date to view all your workouts
-                within that timeframe.</div>
-            <br>
-            <div class="instructions2  hidden-xs hidden-sm hidden-md col-lg-12 titleFont">You can view your workouts from a specific date by only
-                selecting a start date.</div>
-            <div class="wordDate titleFont col-xs-6 col-lg-5">Start Date</div>
-            <div class="wordDate titleFont  col-xs-6 col-lg-5 col-lg-offset-1">End Date</div>
-            <div class="col-xs-5 col-sm-5 col-lg-5 dateTimeCalendar">
-                <div class="form-group">
-                    <div class='input-group date' id='datetimepicker6'>
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                        <input type='text' class="form-control" />
+            <i class="fa fa-question-circle questionIcon" aria-hidden="true" data-toggle="modal"
+                data-target="#exampleModalCenter"></i>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title titleFont2 text-center" id="exampleModalLongTitle">How to Use Start
+                                and End Dates</h5>
+                            </button>
+                        </div>
+                        <div class="msgHeight modal-body">
+                            <div class="instructions titleFont2">Please select a start and end date to view all your
+                                workouts
+                                within that timeframe.</div>
+                            <div class="instructions2 titleFont2">You can view your workouts from a specific date by
+                                only
+                                selecting a start date.</div>
+                                <div class="msgBtn">
+                                    <button type="button" data-dismiss="modal"
+                                    class="msgBtn btn btn-primary">Okay</button>
+                                </div>
+                            
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-5 col-xs-offset-2 col-sm-5 col-sm-offset-2 col-lg-5 col-lg-offset-1 dateTimeCalendar">
-                <div class="form-group">
-                    <div class='input-group date' id='datetimepicker7'>
-                        <span class="input-group-addon">
-                            <span class="glyphicon glyphicon-calendar"></span>
-                        </span>
-                        <input type='text' class="form-control" />
+            <div class="dateTimeContainer col-sm-12 col-lg-12">
+
+                <div class="wordDate titleFont col-xs-6 col-lg-5">Start Date</div>
+                <div class="wordDate titleFont  col-xs-6 col-lg-5 col-lg-offset-1">End Date</div>
+                <div class="col-xs-5 col-sm-5 col-lg-5 dateTimeCalendar">
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker6'>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            <input type='text' class="form-control" />
+                        </div>
                     </div>
                 </div>
+                <div
+                    class="col-xs-5 col-xs-offset-2 col-sm-5 col-sm-offset-2 col-lg-5 col-lg-offset-1 dateTimeCalendar">
+                    <div class="form-group">
+                        <div class='input-group date' id='datetimepicker7'>
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            <input type='text' class="form-control" />
+                        </div>
+                    </div>
+                </div>
+                <div class="dateCancel col-lg-1"><i class="refreshBtn fa fa-refresh iconBtn "></i></div>
             </div>
-            
-            <div class="dateCancel col-lg-1"><i class="refreshBtn fa fa-refresh iconBtn btn_cancel"></i></div>
         </div>
+
+
     </div>
 
     <div class="tableFit col-xs-12 col-md-offset-3 col-md-offset-3 col-sm-9 col-lg-9 col-md-9 ">
@@ -102,24 +127,24 @@
             </h1>
             <h3 class="titleFont hidden-sm hidden-md hidden-lg hidden-xl text-center">Track My Workout
             </h3>
-        <div class="tableContainer media-heading col-xs-12 col-md-12 col-lg-12">
-            <table class="titleFont col-xs-12 col-md-12 col-lg-12">
-                <thead>
-                    <tr>
-                        <th class="col-xs-2 col-md-1 tableHeader">Date</th>
-                        <th class="col-xs-2 col-md-1 tableHeader">Exercise</th>
-                        <th class="col-xs-2 col-md-1 tableHeader">Sets</th>
-                        <th class="col-xs-2 col-md-1 tableHeader">Reps</th>
-                        <th class="col-xs-2 col-md-1 tableHeader">Weight (lbs)</th>
-                        <th class="col-xs-2 col-md-1 tableHeader">Rest (sec)</th>
-                        <th class="col-xs-2 col-md-1 tableHeader">Options</th>
-                    </tr>
-                </thead>
-                <tbody id="displayArea">
-                </tbody>
-            </table>
+            <div class="tableContainer media-heading col-xs-12 col-md-12 col-lg-12">
+                <table class="titleFont col-xs-12 col-md-12 col-lg-12">
+                    <thead class="stripes">
+                        <tr>
+                            <th class="col-xs-2 col-md-1 tableHeader">Date</th>
+                            <th class="col-xs-2 col-md-1 tableHeader">Exercise</th>
+                            <th class="col-xs-2 col-md-1 tableHeader">Sets</th>
+                            <th class="col-xs-2 col-md-1 tableHeader">Reps</th>
+                            <th class="col-xs-2 col-md-1 tableHeader">Weight (lbs)</th>
+                            <th class="col-xs-2 col-md-1 tableHeader">Rest (sec)</th>
+                            <th class="col-xs-2 col-md-1 tableHeader">Options</th>
+                        </tr>
+                    </thead>
+                    <tbody id="displayArea">
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
 
     </div>
 </body>
