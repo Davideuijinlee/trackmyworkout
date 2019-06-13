@@ -104,8 +104,12 @@ tbody#displayArea tr:nth-child(even) {
 }
 
 .questionIcon{
-    font-size:3rem;
+    font-size:2rem;
     color:white;
+}
+.questionIcon:hover{
+    font-size:2rem;
+    color:red;
 }
 
 /* calendar */
@@ -122,6 +126,10 @@ tbody#displayArea tr:nth-child(even) {
 
 .wordDate {
     text-align: center;
+    font-size:2rem;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 10px;
 }
 
 .btn_question {
@@ -163,6 +171,8 @@ tbody#displayArea tr:nth-child(even) {
     font-size: 1.2rem;
 }
 
+
+
 /* media query tables
 /* 
 Max width before this PARTICULAR table gets nasty
@@ -173,22 +183,22 @@ and also iPads specifically.
 (min-device-width: 768px) and (max-device-width: 1024px) {
 
     /* Force table to not be like tables anymore */
-    table,
-    thead,
+    table.titleFont,
+    thead.stripes,
     tbody,
-    th,
+    th.stripes,
     td.tdContainer,
     tr {
         display: block;
     }
 
-    thead tr {
+    thead.stripes tr {
         position: absolute;
         top: -9999px;
         left: -9999px;
     }
 
-    tr {
+    tr.test {
         border: 1px solid #ccc;
     }
 
@@ -315,7 +325,7 @@ and also iPads specifically.
 @media only screen and (min-device-width: 812px) and (max-device-width: 812px) and (orientation: landscape) {
     .dateTimeContainer {
         position: absolute;
-        bottom: -25px;
+        bottom: -9px;
         left: 0;
         /* padding: 0; */
     }
@@ -415,3 +425,17 @@ and also iPads specifically.
         left: 30%;
     }
 }
+@media only screen and (min-device-width: 600px) and (max-device-width: 1100px) {
+    .wordDate {
+        text-align: center;
+        font-size:1.5rem;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 10px;
+    }
+    .questionIcon{
+        font-size:1.5rem;
+        color:white;
+    }
+}
+
