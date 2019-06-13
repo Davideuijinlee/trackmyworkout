@@ -1,15 +1,13 @@
 body {
-    background-color: #89d4cf;
-    background-image: linear-gradient(315deg, #36c4bb 0%, #6e45e1 74%);
     height: 100vh;
 
 }
 
 .titleFont {
     font-family: 'Special Elite', cursive;
-    color: white;
+    color: black;
 }
-.titleFont2 {
+.titleFont2 {   
     font-family: 'Special Elite', cursive;
     color: black;
     font-size:2rem;
@@ -24,12 +22,18 @@ body {
 }
 .msgBtn{
     display: flex;
-    align-items: center;
+    /* align-items: top; */
     justify-content: center;
 }
 
+.modalMargin{
+    margin:0;
+        align-items: middle;
+        justify-content: center;
+}
+
 tbody#displayArea tr:nth-child(even) {
-    background-color: rgb(99, 51, 148);
+    background-color: rgb(213, 243, 255);
 }
 
 
@@ -39,7 +43,7 @@ tbody#displayArea tr:nth-child(even) {
     height: 100vh;
     position: fixed;
     z-index: 1;
-    background-color: rgb(57, 57, 57);
+    background-color: rgb(215, 215, 215);
     /* background-image: linear-gradient(315deg, rgb(111, 111, 111) 0%, #eee 74%); */
 }
 
@@ -82,6 +86,17 @@ tbody#displayArea tr:nth-child(even) {
     position: relative;
 }
 
+.modal-dialog {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .modal-content {
+    margin: 0 auto;
+  }
+
 .modal-backdrop.in { 
     z-index: auto;
 }
@@ -117,7 +132,11 @@ tbody#displayArea tr:nth-child(even) {
     position: absolute;
     bottom: 0;
     left: 0;
-    /* padding: 0; */
+    padding: 0 15px;
+}
+
+.page-header{
+    border-bottom: none;
 }
 
 .dateTimeCalendar {

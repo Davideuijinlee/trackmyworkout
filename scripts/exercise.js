@@ -64,8 +64,10 @@ class Exercise{
     }
 
     handleDelete=()=>{
-		this.deleteExercise(this.data.id);
-		this.domElements.row.remove();
+		this.deleteExercise(this.data.id, this.confirmDeleteExercise, this.data.exercise, this.data.date);
+    }
+    confirmDeleteExercise=()=>{
+        this.domElements.row.remove();
     }
 
     handleUpdate=()=>{

@@ -57,7 +57,7 @@
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-heart"> </span>
                 </span>
-                <input type="text" class="form-control inputSize form-rounded" name="rest" id="rest"
+                <input type="number" class="form-control inputSize form-rounded" name="rest" id="rest"
                     placeholder="Rest (sec)">
             </div>
             <button type="button" class="col-xs-6 add btn btn-success" id="addButton">Add</button>
@@ -68,8 +68,7 @@
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title titleFont2 text-center" id="exampleModalLongTitle">How to Use Start
-                                and End Dates</h5>
+                            <h5 class="modal-title titleFont2 text-center" id="exampleModalLongTitle">How to Use Dates</h5>
                             </button>
                         </div>
                         <div class="msgHeight modal-body">
@@ -126,6 +125,25 @@
             </h1>
             <h3 class="titleFont hidden-sm hidden-md hidden-lg hidden-xl text-center">Track My Workout
             </h3>
+        
+            
+            <div class="modal fade" id="confirm" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+
+            <div class="modal-dialog modal-dialog-centered modalMargin" role="document">
+                <div class="modal-content">
+                    <div class="msgHeight modal-body">
+                        <div class="newTextContainer">
+                                <h5 class="modal-title titleFont2 text-center" id="exampleModalLongTitle newText"></h5>
+                        </div>
+                        <div class="msgBtn">
+                            <button type="button" data-dismiss="modal" class="btn btn-primary" id="deleteExercise">Delete</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-danger">Cancel</button>                        </div>
+                    </div>
+                </div>
+            </div>
+
+              </div>
             <div class="tableContainer media-heading col-xs-12 col-md-12 col-lg-12">
                 <table class="titleFont col-xs-12 col-md-12 col-lg-12">
                     <thead class="stripes">
