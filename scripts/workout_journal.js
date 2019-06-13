@@ -138,12 +138,12 @@ class workoutJournal {
 
 			tbl_row.find('.btn_edit').hide();
 			tbl_row.find('.btn_delete').hide();
-
+			
 			tbl_row.find('.row_data')
 				.attr('contenteditable', 'true')
 				.attr('edit_type', 'button')
 				.css({
-					'background-color': '#3d3f3f',
+					'background-color': 'rgb(241, 250, 132)',
 					'padding': '3px',
 					'border-right': '2px solid #eee',
 		})
