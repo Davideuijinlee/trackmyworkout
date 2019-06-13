@@ -53,7 +53,7 @@ class workoutJournal {
 
 	createExercise(id, date, exercise, sets, reps, weight, rest) {
 		if (date && exercise && sets && reps && weight && rest) {
-			const exerciseElement = new Exercise(id, date, exercise, sets, reps, weight, rest, this.updateExercise, this.DeleteDatatoServer, this.cancelUpdate, this.saveUpdate);
+			const exerciseElement = new Exercise(id, date, exercise, sets, reps, weight, rest, this.updateExercise, this.confirmDelete, this.cancelUpdate, this.saveUpdate);
 			this.data[id] = exerciseElement;
 		}
 	}
@@ -330,4 +330,18 @@ selectDate=()=>{
 			journal.getDataFromServer();
 		});
 }
+
+confirmDelete=(id, confirmDeleteExercise, exercise, date)=>{
+		$('#confirm').modal({
+			backdrop: 'static',
+			keyboard: false
+		}).on('click', '#deleteExercise', ()=> {
+			this.DeleteDatatoServer(id);
+			confirmDeleteExercise();
+		});
+		let modalTitle = $('<h5>').addClass('modal-title titleFont2 text-center').attr('id', 'exampleModalLongTitle newText').text(`Are you sure you want to delete ${exercise} from ${date}?`);
+		$('.newTextContainer').append(modalTitle);
+
 }
+}
+

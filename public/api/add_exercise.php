@@ -8,7 +8,7 @@ set_exception_handler('handleError');
         'success'=> false,
     ];
 
-    $exercise = $_POST['exercise'];
+    $exercise = addslashes($_POST['exercise']);
     $sets = (int)$_POST['sets'];
     $reps = (int)$_POST['reps'];
     $weight = (int)$_POST['weight'];
