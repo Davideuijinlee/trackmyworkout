@@ -11,7 +11,7 @@ set_exception_handler('handleError');
     $id = $_POST['id'];
     $timestamp = strtotime($_POST['date']);
     $date = date("Y-m-d H:i:s", $timestamp);
-    $exercise = $_POST['exercise'];
+    $exercise = addslashes($_POST['exercise']);
     $sets = (int)$_POST['sets'];
     $reps = (int)$_POST['reps'];
     $weight = (int)$_POST['weight'];

@@ -18,7 +18,6 @@ function startJournal(){
 	journal.addEventHandlers();
 	journal.getDataFromServer();
 	journal.selectDate();
-	
 }
 
 

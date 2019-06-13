@@ -31,12 +31,12 @@ class Exercise{
 
     render(){
         const {id, date, exercise, sets, reps, weight, rest} = this.data;
-        const dateDiv = $('<div>').addClass('row_data').text(date).attr('edit_type', 'click').attr('col_name', 'date');
-        const exerciseDiv = $('<div>').addClass('row_data').text(exercise).attr('edit_type', 'click').attr('col_name', 'exercise');
-        const setsDiv = $('<div>').addClass('row_data').text(sets).attr('edit_type', 'click').attr('col_name', 'sets');
-        const repsDiv = $('<div>').addClass('row_data').text(reps).attr('edit_type', 'click').attr('col_name', 'reps');
-        const weightDiv = $('<div>').addClass('row_data').text(weight).attr('edit_type', 'click').attr('col_name', 'weight');
-        const restDiv = $('<div>').addClass('row_data').text(rest).attr('edit_type', 'click').attr('col_name', 'rest');
+        const dateDiv = $('<div>').addClass('row_data dateInfo').text(date).attr('edit_type', 'click').attr('col_name', 'date');
+        const exerciseDiv = $('<div>').addClass('row_data exerciseInfo').text(exercise).attr('edit_type', 'click').attr('col_name', 'exercise');
+        const setsDiv = $('<div>').addClass('row_data setsInfo').text(sets).attr('edit_type', 'click').attr('col_name', 'sets');
+        const repsDiv = $('<div>').addClass('row_data repsInfo').text(reps).attr('edit_type', 'click').attr('col_name', 'reps');
+        const weightDiv = $('<div>').addClass('row_data weightInfo').text(weight).attr('edit_type', 'click').attr('col_name', 'weight');
+        const restDiv = $('<div>').addClass('row_data restInfo').text(rest).attr('edit_type', 'click').attr('col_name', 'rest');
         const dateElement = $('<td>').append(dateDiv).addClass('tdContainer');
         const exerciseElement = $('<td>').append(exerciseDiv).addClass('tdContainer');
         const setsElement = $('<td>').append(setsDiv).addClass('tdContainer');
@@ -75,6 +75,6 @@ class Exercise{
     }
     
     handleSave=()=>{
-        this.saveUpdate(this.data.id)
+        this.saveUpdate(this.data.id, this.data.date)
     }
 }
