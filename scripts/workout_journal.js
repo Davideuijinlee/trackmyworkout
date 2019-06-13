@@ -339,7 +339,14 @@ confirmDelete=(id, confirmDeleteExercise, exercise, date)=>{
 			this.DeleteDatatoServer(id);
 			confirmDeleteExercise();
 		});
-		let modalTitle = $('<h5>').addClass('modal-title titleFont2 text-center').attr('id', 'exampleModalLongTitle newText').text(`Are you sure you want to delete ${exercise} from ${date}?`);
+		
+		$('#deleteH5').on('click', ()=>{
+			$('.tempModal').remove()
+		});
+
+		let modalTitle = $('<h5>').addClass('modal-title titleFont2 text-center tempModal').attr('id', 'exampleModalLongTitle newText').text(`Are you sure you want to delete ${exercise} from ${date}?`).css({
+			'margin-bottom': '20px'
+		});
 		$('.newTextContainer').append(modalTitle);
 
 }
