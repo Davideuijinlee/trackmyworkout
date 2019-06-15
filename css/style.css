@@ -3,6 +3,10 @@ body {
 
 }
 
+.mainInput, .inputZ, .input-group .form-control {
+    z-index: auto;
+}
+
 .titleFont {
     font-family: 'Special Elite', cursive;
     color: black;

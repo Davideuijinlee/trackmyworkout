@@ -165,33 +165,41 @@ class workoutJournal {
 
 
 	updateExercise = (id) => {
-		$(document).on('click', '.btn_edit', function (event) {
+		if(id > 5){
+			$(document).on('click', '.btn_edit', function (event) {
 
-			event.preventDefault();
-			const tbl_row = $(this).closest('tr');
-
-			const row_id = tbl_row.attr('row_id');
-
-			tbl_row.find('.btn_save').show();
-			tbl_row.find('.btn_cancel').show();
-
-			tbl_row.find('.btn_edit').hide();
-			tbl_row.find('.btn_delete').hide();
-
-			tbl_row.find('.row_data')
-				.attr('contenteditable', 'true')
-				.attr('edit_type', 'button')
-				.css({
-					'background-color': 'rgb(241, 250, 132)',
-					'padding': '3px',
-					'border-right': '2px solid #eee',
-				})
-
-
-			tbl_row.find('.row_data').each(function (index, val) {
-				$(this).attr('original_entry', $(this).html());
+				event.preventDefault();
+				const tbl_row = $(this).closest('tr');
+	
+				const row_id = tbl_row.attr('row_id');
+	
+				tbl_row.find('.btn_save').show();
+				tbl_row.find('.btn_cancel').show();
+	
+				tbl_row.find('.btn_edit').hide();
+				tbl_row.find('.btn_delete').hide();
+	
+				tbl_row.find('.row_data')
+					.attr('contenteditable', 'true')
+					.attr('edit_type', 'button')
+					.css({
+						'background-color': 'rgb(241, 250, 132)',
+						'padding': '3px',
+						'border-right': '2px solid #eee',
+					})
+	
+	
+				tbl_row.find('.row_data').each(function (index, val) {
+					$(this).attr('original_entry', $(this).html());
+				});
 			});
-		});
+		} else{
+			$('#preset').modal({
+				backdrop: 'static',
+				keyboard: false
+			})
+		}
+		
 	}
 
 
@@ -303,6 +311,14 @@ class workoutJournal {
 				id
 			},
 			success: this.getDataFromServer = () => { }
+		})
+	}
+
+	deleteData = () => {
+		$.ajax({
+			url: 'public/api/reset_table.php',
+			dataType: 'json',
+			method: 'post',
 		})
 	}
 
