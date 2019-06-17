@@ -9,7 +9,7 @@ $output = [
 ];
 
 $query = "SELECT `id`, `date`, `exercise`, `sets`, `reps`, `weight`, `rest` FROM `exercises`
-    ORDER BY DATE(`date`) DESC";
+    ORDER BY DATE(`date`) ASC";
 
 $result = mysqli_query($conn, $query);
 

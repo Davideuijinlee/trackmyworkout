@@ -75,6 +75,7 @@ class Exercise{
     }
     
     handleSave=()=>{
-        this.saveUpdate(this.data.id, this.data.date)
+        let{id, date, sets, reps, weight, rest} = this.data
+        this.saveUpdate(id, date, sets, reps, weight, rest)
     }
 }
