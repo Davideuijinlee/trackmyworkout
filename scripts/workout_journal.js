@@ -71,7 +71,7 @@ class workoutJournal {
 		$('#displayArea').empty();
 		for (let id in this.data) {
 			let exerciseRow = this.data[id].render();
-			$('#displayArea').append(exerciseRow);
+			$('#displayArea').prepend(exerciseRow);
 		}
 	}
 
