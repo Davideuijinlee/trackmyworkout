@@ -16,7 +16,6 @@ function startJournal(){
 	});
 
 	journal.addEventHandlers();
-	journal.deleteData();
 	journal.getDataFromServer();
 	journal.selectDate();
 }
