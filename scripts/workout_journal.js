@@ -29,6 +29,7 @@ class workoutJournal {
 	}
 
 	handleAdd = () => {
+		debugger;
 		const { exerciseInput, setInput, repInput, weightInput, restInput } = this.elementConfig;
 		this.exerciseName = exerciseInput.val();
 		this.exerciseSets = setInput.val();
@@ -36,32 +37,36 @@ class workoutJournal {
 		this.exerciseWeight = weightInput.val();
 		this.exerciseRest = restInput.val();
 
-		if ($.trim($('#exercise').val()) == '') {
+		if (this.exerciseName == '') {
 			$('#missingValue').modal({
 				backdrop: 'static',
 				keyboard: false
 			})
-
-		} if ($.trim($('#sets').val()) == 0) {
+			return;
+		} if (this.exerciseSets == '' || isNaN(this.exerciseSets)) {
 			$('#missingValue').modal({
 				backdrop: 'static',
 				keyboard: false
 			})
-		} if ($.trim($('#reps').val()) == 0) {
+			return;
+		} if (this.exerciseReps == '' || isNaN(this.exerciseReps)) {
 			$('#missingValue').modal({
 				backdrop: 'static',
 				keyboard: false
 			})
-		} if ($.trim($('#weight').val()) == 0) {
+			return;
+		} if (this.exerciseWeight == '' || isNaN(this.exerciseWeight)) {
 			$('#missingValue').modal({
 				backdrop: 'static',
 				keyboard: false
 			})
-		} if ($.trim($('#rest').val()) == 0) {
+			return;
+		} if (this.exerciseRest == '' || isNaN(this.exerciseRest)) {
 			$('#missingValue').modal({
 				backdrop: 'static',
 				keyboard: false
 			})
+			return;
 		} else {
 			this.createExerciseForm(this.exerciseName, this.exerciseSets, this.exerciseReps, this.exerciseWeight, this.exerciseRest);
 		}
@@ -311,14 +316,6 @@ class workoutJournal {
 				id
 			},
 			success: this.getDataFromServer = () => { }
-		})
-	}
-
-	deleteData = () => {
-		$.ajax({
-			url: 'public/api/reset_table.php',
-			dataType: 'json',
-			method: 'post',
 		})
 	}
 
