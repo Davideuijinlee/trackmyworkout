@@ -381,24 +381,33 @@ class workoutJournal {
 	}
 
 	confirmDelete = (id, confirmDeleteExercise, exercise, date) => {
-		$('#confirm').modal({
-			backdrop: 'static',
-			keyboard: false
-		}).on('click', '#deleteExercise', () => {
-			this.DeleteDatatoServer(id);
-			confirmDeleteExercise();
-			$('.tempModal').remove()
-		});
-
-		$('#deleteH5').on('click', () => {
-			$('.tempModal').remove()
-		});
-
-		let modalTitle = $('<h5>').addClass('modal-title titleFont2 text-center tempModal').attr('id', 'exampleModalLongTitle newText').text(`Are you sure you want to delete ${exercise} from ${date}?`).css({
-			'margin-bottom': '20px'
-		});
-		$('.newTextContainer').append(modalTitle);
-
+		if(id <= 5){
+			$('#deletePreset').modal({
+				backdrop: 'static',
+				keyboard: false
+			})
+			return;
+		}else{
+			$('#confirm').modal({
+				backdrop: 'static',
+				keyboard: false
+			}).on('click', '#deleteExercise', () => {
+				this.DeleteDatatoServer(id);
+				confirmDeleteExercise();
+				$('.tempModal').remove()
+			});
+	
+			$('#deleteH5').on('click', () => {
+				$('.tempModal').remove()
+			});
+	
+			let modalTitle = $('<h5>').addClass('modal-title titleFont2 text-center tempModal').attr('id', 'exampleModalLongTitle newText').text(`Are you sure you want to delete ${exercise} from ${date}?`).css({
+				'margin-bottom': '20px'
+			});
+			$('.newTextContainer').append(modalTitle);
+	
+		}
+		
 	}
 }
 
