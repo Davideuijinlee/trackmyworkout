@@ -29,7 +29,6 @@ class workoutJournal {
 	}
 
 	handleAdd = () => {
-		debugger;
 		const { exerciseInput, setInput, repInput, weightInput, restInput } = this.elementConfig;
 		this.exerciseName = exerciseInput.val();
 		this.exerciseSets = setInput.val();
@@ -122,7 +121,6 @@ class workoutJournal {
 	}
 
 	saveUpdate = (id, date, sets, reps, weight, rest) => {
-		debugger;
 		let date_regex = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/;
 		if (!(date_regex.test($(`div[original_entry='${date}']`).text()))) {
 		
@@ -232,7 +230,6 @@ class workoutJournal {
 	}
 
 	getSpecificDate = (date) => {
-		debugger
 		this.data = {};
 		$.ajax({
 			url: 'public/api/get_specific_date.php',
@@ -355,7 +352,6 @@ class workoutJournal {
 		let startDate = '';
 		let endDate = '';
 		$('#datetimepicker6').on('dp.change', function (e) {
-			debugger;
 			$('#datetimepicker7').data('DateTimePicker').minDate(e.date);
 			startDate = $("#datetimepicker6").find("input").val();
 			if (startDate === endDate){
@@ -372,7 +368,6 @@ class workoutJournal {
 		});
 
 		$("#datetimepicker7").on("dp.change", function (e) {
-			debugger;
 			$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
 			endDate = $("#datetimepicker7").find('input').val();
 			if (startDate === endDate){
