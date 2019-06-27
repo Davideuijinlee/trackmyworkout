@@ -8,6 +8,7 @@ class workoutJournal {
 		this.exerciseReps = null;
 		this.exerciseWeight = null;
 		this.exerciseRest = null;
+		this.currentEdit = null;
 	}
 
 	addEventHandlers() {
@@ -168,9 +169,17 @@ class workoutJournal {
 
 
 	updateExercise = (id) => {
-		if(id > 5){
+		debugger;
 			$(document).on('click', '.btn_edit', function (event) {
-
+				$('#tbl').find('.btn_save, .btn_cancel').hide();
+				$('#tbl').find('.btn_edit, .btn_delete').show();
+				$('*').attr('contenteditable', false)
+				$('.row_data').css({
+					'padding': '',
+					'border-right': 'none',
+					'background-color': ''
+				})
+				$(this).hide().siblings('.btn_save, .btn_cancel').show();
 				event.preventDefault();
 				const tbl_row = $(this).closest('tr');
 	
@@ -190,19 +199,10 @@ class workoutJournal {
 						'padding': '3px',
 						'border-right': '2px solid #eee',
 					})
-	
-	
 				tbl_row.find('.row_data').each(function (index, val) {
 					$(this).attr('original_entry', $(this).html());
 				});
 			});
-		} else{
-			$('#preset').modal({
-				backdrop: 'static',
-				keyboard: false
-			})
-		}
-		
 	}
 
 
