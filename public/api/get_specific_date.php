@@ -12,7 +12,7 @@ $timestamp = $_GET['date'];
 $date = date('Y-m-d', strtotime($timestamp));
 
 
-$query = "SELECT `id`, `date`, `exercise`, `sets`, `reps`, `weight`, `rest` from `exercises` WHERE `date` = '$date'";
+$query = "SELECT `id`, `date`, `exercise`, `sets`, `reps`, `weight`, `rest` from `exercises` WHERE date(`date`) = '$date'";
 
 
 

@@ -232,6 +232,7 @@ class workoutJournal {
 	}
 
 	getSpecificDate = (date) => {
+		debugger
 		this.data = {};
 		$.ajax({
 			url: 'public/api/get_specific_date.php',
@@ -354,20 +355,34 @@ class workoutJournal {
 		let startDate = '';
 		let endDate = '';
 		$('#datetimepicker6').on('dp.change', function (e) {
+			debugger;
 			$('#datetimepicker7').data('DateTimePicker').minDate(e.date);
 			startDate = $("#datetimepicker6").find("input").val();
+			if (startDate === endDate){
+				journal.getSpecificDate(startDate);
+				return;
+			}
 			if (startDate && endDate) {
 				journal.getDateRange(startDate, endDate);
-			} else if (startDate && !endDate) {
+				return;
+			}  if (startDate && endDate === '') {
 				journal.getSpecificDate(startDate);
-			}
+				return;
+			}  
 		});
 
 		$("#datetimepicker7").on("dp.change", function (e) {
+			debugger;
 			$('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
 			endDate = $("#datetimepicker7").find('input').val();
-			if (startDate) {
+			if (startDate === endDate){
+				journal.getSpecificDate(startDate);
+				return;
+			} 	if (startDate) {
 				journal.getDateRange(startDate, endDate);
+				return;
+			} else{
+				return;
 			}
 		});
 
