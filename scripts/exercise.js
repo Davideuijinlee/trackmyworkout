@@ -1,5 +1,5 @@
 class Exercise{
-    constructor(id, date, exercise, sets, reps, weight, rest, updateExercise=()=>{}, deleteExercise=()=>{}, cancelUpdate=()=>{}, saveUpdate=()=>{}){
+    constructor(id, date, exercise, sets, reps, weight, rest, updateExercise=()=>{}, deleteExercise=()=>{}, cancelUpdate=()=>{}, saveUpdate=()=>{}, cancelDelete=()=>{}, deletePerm=()=>{}){
         this.data = {
             id,
             date,
@@ -14,6 +14,8 @@ class Exercise{
         this.deleteExercise = deleteExercise;
         this.cancelUpdate = cancelUpdate;
         this.saveUpdate = saveUpdate;
+        this.cancelDelete = cancelDelete;
+        this.deletePerm = deletePerm;
 
         this.domElements = {
 			row: null,
@@ -31,7 +33,7 @@ class Exercise{
 
     render(){
         const {id, date, exercise, sets, reps, weight, rest} = this.data;
-        const dateDiv = $('<div>').addClass('row_data dateInfo').text(date).attr('edit_type', 'click').attr('col_name', 'date');
+        const dateDiv = $('<div>').addClass('row_data dateInfo').text(date).attr('edit_type', 'click').attr('col_name', 'date').attr('id', `${this.data.id}`);
         const exerciseDiv = $('<div>').addClass('row_data exerciseInfo').text(exercise).attr('edit_type', 'click').attr('col_name', 'exercise');
         const setsDiv = $('<div>').addClass('row_data setsInfo').text(sets).attr('edit_type', 'click').attr('col_name', 'sets');
         const repsDiv = $('<div>').addClass('row_data repsInfo').text(reps).attr('edit_type', 'click').attr('col_name', 'reps');
@@ -46,8 +48,11 @@ class Exercise{
         const updateButton = $('<i>').attr('row_id', id).addClass('fa fa-edit iconBtn updateBtn btn_edit').on('click', this.handleUpdate);
         const saveButton = $('<i>').attr('row_id', id).addClass('fa fa-save iconBtn btn_save').on('click', this.handleSave).hide();
         const cancelButton = $('<i>').attr('row_id', id).addClass('fa fa-times iconBtn btn_cancel').on('click', this.cancelUpdate).hide();
-		const deleteButton = $('<i>').addClass('fa fa-trash iconBtn btn_delete').on('click', this.handleDelete);
-        const optionsElements = $('<td>').append(updateButton, saveButton, deleteButton, cancelButton).addClass('tdContainer');;
+        const deleteButton = $('<i>').addClass('fa fa-trash iconBtn btn_delete').on('click', this.handleDelete);
+        const yesDelete = $('<i>').addClass('fa fa-check iconBtn btn_yes').on('click', this.permanentlyDeleteExercise).hide();
+        const noDelete = $('<i>').addClass('fa fa-times iconBtn btn_no').on('click', this.denyDeleteExercise).hide();
+
+        const optionsElements = $('<td>').append(updateButton, saveButton, deleteButton, cancelButton, yesDelete, noDelete).addClass('tdContainer');;
         const tableRow = $('<tr>').attr('row_id', id).addClass('rowClass').append(dateElement, exerciseElement, setsElement, repsElement, weightElement, restElement, optionsElements);
 
         this.domElements = {
@@ -66,8 +71,14 @@ class Exercise{
     handleDelete=()=>{
 		this.deleteExercise(this.data.id, this.confirmDeleteExercise, this.data.exercise, this.data.date);
     }
-    confirmDeleteExercise=()=>{
+
+    permanentlyDeleteExercise=()=>{
+        this.deletePerm(this.data.id)
         this.domElements.row.remove();
+    }
+
+    denyDeleteExercise=()=>{
+        this.cancelDelete();
     }
 
     handleUpdate=(id)=>{
