@@ -70,7 +70,7 @@ class Exercise{
         this.domElements.row.remove();
     }
 
-    handleUpdate=()=>{
+    handleUpdate=(id)=>{
 		this.updateExercise(this.data.id);
     }
     
