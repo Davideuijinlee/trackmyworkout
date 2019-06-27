@@ -194,10 +194,15 @@ class workoutJournal {
 
 	updateExercise = (id) => {
 		$(document).on('click', '.btn_edit', function (event) {
-			$('#tbl').find('.btn_save, .btn_cancel').hide();
+			$('#tbl').find('.btn_save, .btn_cancel, .btn_yes, .btn_no').hide();
 			$('#tbl').find('.btn_edit, .btn_delete').show();
 			$('*').attr('contenteditable', false)
 			$('.row_data').css({
+				'padding': '',
+				'border-right': 'none',
+				'background-color': ''
+			})
+			$('.rowClass').css({
 				'padding': '',
 				'border-right': 'none',
 				'background-color': ''
@@ -416,10 +421,16 @@ class workoutJournal {
 	confirmDelete = (id, confirmDeleteExercise, exercise, date) => {
 
 		$(document).on('click', '.btn_delete', function (event) {
+
 			$('#tbl').find('.btn_edit, .btn_delete').show();
-			$('#tbl').find('.btn_yes, .btn_no').hide();
+			$('#tbl').find('.btn_save, .btn_cancel, .btn_yes, .btn_no').hide();
 			$('*').attr('contenteditable', false)
 			$('.rowClass').css({
+				'padding': '',
+				'border-right': 'none',
+				'background-color': ''
+			})
+			$('.row_data').css({
 				'padding': '',
 				'border-right': 'none',
 				'background-color': ''
