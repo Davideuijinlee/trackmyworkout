@@ -147,7 +147,6 @@ class workoutJournal {
 	}
 
 	saveUpdate = (id, date, sets, reps, weight, rest) => {
-		debugger;
 		if(!this.isValidDate($(`div[id='${id}']`).text())){
 			$('#improperFormat').modal({
 				backdrop: 'static',
@@ -267,18 +266,27 @@ class workoutJournal {
 				date
 			},
 			success: function (response) {
-				for (let index in response) {
-					journal.createExercise(
-						response[index].id,
-						response[index].date,
-						response[index].exercise,
-						response[index].sets,
-						response[index].reps,
-						response[index].weight,
-						response[index].rest
-					)
-				};
-				journal.displayAllExercises();
+				console.log('response', response)
+				if(!$.isArray(response) || !response.length){
+					$('#emptyDate').modal({
+						backdrop: 'static',
+						keyboard: false
+					})
+				}else{
+					for (let index in response) {
+						journal.createExercise(
+							response[index].id,
+							response[index].date,
+							response[index].exercise,
+							response[index].sets,
+							response[index].reps,
+							response[index].weight,
+							response[index].rest
+						)
+					};
+					journal.displayAllExercises();
+				}
+				
 			}
 		});
 	}

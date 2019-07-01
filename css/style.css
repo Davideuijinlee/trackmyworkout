@@ -65,6 +65,10 @@ tbody#displayArea tr:nth-child(odd) {
     background-color: rgb(213, 243, 255);
 }
 
+span.month{
+margin:5px;
+}
+
 
 /* exercise bar */
 
@@ -303,9 +307,6 @@ and also iPads specifically.
         content: "Options";
     }
 
-    tr.rowClass:nth-child(even) {
-        /* background-color: #3f3e3e; */
-    }
 }
 
 /* Media Query Exercise Bar */
