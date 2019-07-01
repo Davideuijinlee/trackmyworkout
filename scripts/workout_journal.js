@@ -238,7 +238,8 @@ class workoutJournal {
 		let tbody = $("#displayArea");
 
 		if (tbody.children().length == 0) {
-			tbody.html("<div class='emptyTableMsg'>There are currently no exercises</div>");
+			let emptyDiv = $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
+			tbody.append(emptyDiv);
 		}
 		$.ajax({
 			url: 'public/api/get_exercise.php',
