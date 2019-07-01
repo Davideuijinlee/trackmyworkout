@@ -234,7 +234,14 @@ span.year{
     font-size: 1.2rem;
 }
 
-
+.emptyTableMsg{
+    position: absolute; /* or absolute */
+    text-align: center;
+    top: 50px;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+}
 
 /* media query tables
 /* 
@@ -520,3 +527,44 @@ and also iPads specifically.
         color: white;
     }
 }
+
+@media (max-device-width: 1100px) {
+    .wordDate {
+        text-align: center;
+        font-size: 1rem;
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 10px;
+    }
+
+    .questionIcon {
+        font-size: 1.3rem;
+        color: white;
+    }
+}
+/* @media (max-device-width: 1024px) {
+    .emptyTableMsg{
+        position: absolute;
+        left: 34%;
+        width: 100vw;
+        margin-top: 10px;
+    }
+}
+@media only screen and (max-device-width: 812px) {
+    .emptyTableMsg{
+        position: absolute;
+        left: 27%;
+        width: 100vw;
+        margin-top: 10px;
+    }
+}
+@media only screen and (max-device-width: 500px) {
+    .emptyTableMsg{
+        position: absolute;
+        
+        margin-left: auto;
+        margin-right: auto;
+        width: 100vw;
+        margin-top: 10px;
+    }
+} */

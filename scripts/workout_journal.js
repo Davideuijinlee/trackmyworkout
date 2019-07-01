@@ -121,33 +121,33 @@ class workoutJournal {
 		});
 	}
 
-	isValidDate=(dateString)=>{
+	isValidDate = (dateString) => {
 		{
-			if(!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)){
+			if (!/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(dateString)) {
 				return false;
 
 			}
-		
+
 			var parts = dateString.split("/");
 			var day = parseInt(parts[1], 10);
 			var month = parseInt(parts[0], 10);
 			var year = parseInt(parts[2], 10);
-		
-			if(year < 1000 || year > 3000 || month == 0 || month > 12){
+
+			if (year < 1000 || year > 3000 || month == 0 || month > 12) {
 				return false
 			}
-		
-			var monthLength = [ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ];
-		
-			if(year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
+
+			var monthLength = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+			if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))
 				monthLength[1] = 29;
-		
+
 			return day > 0 && day <= monthLength[month - 1];
 		};
 	}
 
 	saveUpdate = (id, date, sets, reps, weight, rest) => {
-		if(!this.isValidDate($(`div[id='${id}']`).text())){
+		if (!this.isValidDate($(`div[id='${id}']`).text())) {
 			$('#improperFormat').modal({
 				backdrop: 'static',
 				keyboard: false
@@ -235,6 +235,11 @@ class workoutJournal {
 
 
 	getDataFromServer = () => {
+		let tbody = $("#displayArea");
+
+		if (tbody.children().length == 0) {
+			tbody.html("<div class='emptyTableMsg'>There are currently no exercises</div>");
+		}
 		$.ajax({
 			url: 'public/api/get_exercise.php',
 			dataType: 'json',
@@ -267,12 +272,12 @@ class workoutJournal {
 			},
 			success: function (response) {
 				console.log('response', response)
-				if(!$.isArray(response) || !response.length){
+				if (!$.isArray(response) || !response.length) {
 					$('#emptyDate').modal({
 						backdrop: 'static',
 						keyboard: false
 					})
-				}else{
+				} else {
 					for (let index in response) {
 						journal.createExercise(
 							response[index].id,
@@ -286,7 +291,7 @@ class workoutJournal {
 					};
 					journal.displayAllExercises();
 				}
-				
+
 			}
 		});
 	}
@@ -349,7 +354,7 @@ class workoutJournal {
 			data: {
 				id
 			},
-			success: this.getDataFromServer = () => {}
+			success: this.getDataFromServer = () => { }
 		})
 	}
 
@@ -384,8 +389,8 @@ class workoutJournal {
 			format: 'MM/DD/YYYY',
 			useCurrent: false,
 		});
-		
-		
+
+
 
 		$('#datetimepicker7').datetimepicker({
 			format: 'MM/DD/YYYY',
@@ -489,11 +494,11 @@ class workoutJournal {
 			tbl_row.find('.btn_delete').show();
 
 			tbl_row.attr('edit_type', 'click')
-			.attr('contenteditable', 'false').css({
-				'padding': '',
-				'border-right': 'none',
-				'background-color': ''
-			})
+				.attr('contenteditable', 'false').css({
+					'padding': '',
+					'border-right': 'none',
+					'background-color': ''
+				})
 
 			tbl_row.find('.row_data').each(function (index, val) {
 				$(this).html($(this).attr('original_entry'));
