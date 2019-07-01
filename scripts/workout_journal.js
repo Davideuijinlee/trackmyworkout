@@ -380,6 +380,13 @@ class workoutJournal {
 			useCurrent: false,
 		});
 
+		$('#datetimepicker6').datetimepicker({
+			format: 'MM/DD/YYYY',
+			useCurrent: false,
+		});
+		
+		
+
 		$('#datetimepicker7').datetimepicker({
 			format: 'MM/DD/YYYY',
 			useCurrent: false,
