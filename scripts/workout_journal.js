@@ -234,7 +234,7 @@ class workoutJournal {
 
 
 
-	getDataFromServer = () => {
+	async getDataFromServer = () => {
 		debugger;
 		let tbody = $("#displayArea");
 
@@ -258,7 +258,7 @@ class workoutJournal {
 			}
 		});
 		if (tbody.children().length == 0) {
-			let emptyDiv = $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
+			let emptyDiv = await $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
 			tbody.append(emptyDiv);
 		}
 	}
