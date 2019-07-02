@@ -481,7 +481,11 @@ class workoutJournal {
 				$(this).attr('original_entry', $(this).html());
 			});
 		});
-		this.displayAllExercises();
+		let tbody = $("#displayArea");
+		if (tbody.children().length == 0) {
+			let emptyDiv = $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
+			tbody.append(emptyDiv);
+		}
 	}
 
 	cancelDelete = () => {
