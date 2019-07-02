@@ -73,10 +73,16 @@ class workoutJournal {
 	}
 
 	displayAllExercises() {
+		let tbody = $("#displayArea");
+
 		$('#displayArea').empty();
 		for (let id in this.data) {
 			let exerciseRow = this.data[id].render();
 			$('#displayArea').prepend(exerciseRow);
+		}
+		if (tbody.children().length == 0) {
+			let emptyDiv = $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
+			tbody.append(emptyDiv);
 		}
 	}
 
@@ -234,9 +240,8 @@ class workoutJournal {
 
 
 
-	async getDataFromServer = () => {
+	getDataFromServer = () => {
 		debugger;
-		let tbody = $("#displayArea");
 
 		$.ajax({
 			url: 'public/api/get_exercise.php',
@@ -257,10 +262,7 @@ class workoutJournal {
 				journal.displayAllExercises();
 			}
 		});
-		if (tbody.children().length == 0) {
-			let emptyDiv = await $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
-			tbody.append(emptyDiv);
-		}
+
 	}
 
 	getSpecificDate = (date) => {
