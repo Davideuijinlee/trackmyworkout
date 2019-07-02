@@ -76,6 +76,7 @@ class workoutJournal {
 		let tbody = $("#displayArea");
 
 		$('#displayArea').empty();
+		
 		for (let id in this.data) {
 			let exerciseRow = this.data[id].render();
 			$('#displayArea').prepend(exerciseRow);
@@ -92,7 +93,7 @@ class workoutJournal {
 
 	createExercise(id, date, exercise, sets, reps, weight, rest) {
 		if (date && exercise && sets && reps && weight && rest) {
-			const exerciseElement = new Exercise(id, date, exercise, sets, reps, weight, rest, this.updateExercise, this.confirmDelete, this.cancelUpdate, this.saveUpdate, this.cancelDelete, this.DeleteDatatoServer);
+			const exerciseElement = new Exercise(id, date, exercise, sets, reps, weight, rest, this.updateExercise, this.confirmDelete, this.cancelUpdate, this.saveUpdate, this.cancelDelete, this.DeleteDatatoServer, this.displayAllExercises);
 			this.data[id] = exerciseElement;
 		}
 	}
@@ -241,7 +242,6 @@ class workoutJournal {
 
 
 	getDataFromServer = () => {
-		debugger;
 
 		$.ajax({
 			url: 'public/api/get_exercise.php',
@@ -344,6 +344,9 @@ class workoutJournal {
 	}
 
 	handleDataSuccess = (response) => {
+		debugger;
+		$('.emptyTableMsg').remove();
+
 		if (response.success) {
 			this.clearInputs();
 			this.getDataFromServer();
@@ -481,11 +484,7 @@ class workoutJournal {
 				$(this).attr('original_entry', $(this).html());
 			});
 		});
-		let tbody = $("#displayArea");
-		if (tbody.children().length == 0) {
-			let emptyDiv = $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
-			tbody.append(emptyDiv);
-		}
+
 	}
 
 	cancelDelete = () => {

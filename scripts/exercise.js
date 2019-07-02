@@ -1,5 +1,5 @@
 class Exercise{
-    constructor(id, date, exercise, sets, reps, weight, rest, updateExercise=()=>{}, deleteExercise=()=>{}, cancelUpdate=()=>{}, saveUpdate=()=>{}, cancelDelete=()=>{}, deletePerm=()=>{}){
+    constructor(id, date, exercise, sets, reps, weight, rest, updateExercise=()=>{}, deleteExercise=()=>{}, cancelUpdate=()=>{}, saveUpdate=()=>{}, cancelDelete=()=>{}, deletePerm=()=>{},displayAllExercises=()=>{}){
         this.data = {
             id,
             date,
@@ -16,6 +16,7 @@ class Exercise{
         this.saveUpdate = saveUpdate;
         this.cancelDelete = cancelDelete;
         this.deletePerm = deletePerm;
+        this.displayAllExercises = displayAllExercises;
 
         this.domElements = {
 			row: null,
@@ -73,8 +74,14 @@ class Exercise{
     }
 
     permanentlyDeleteExercise=()=>{
+        let tbody = $("#displayArea");
+
         this.deletePerm(this.data.id)
         this.domElements.row.remove();
+        // if (tbody.children().length == 0) {
+		// 	let emptyDiv = $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
+		// 	tbody.append(emptyDiv);
+		// }
     }
 
     denyDeleteExercise=()=>{
@@ -88,5 +95,6 @@ class Exercise{
     handleSave=()=>{
         let{id, date, sets, reps, weight, rest} = this.data
         this.saveUpdate(id, date, sets, reps, weight, rest)
+
     }
 }
