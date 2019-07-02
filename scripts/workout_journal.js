@@ -344,9 +344,7 @@ class workoutJournal {
 	}
 
 	handleDataSuccess = (response) => {
-		debugger;
-		$('.emptyTableMsg').remove();
-
+		
 		if (response.success) {
 			this.clearInputs();
 			this.getDataFromServer();
