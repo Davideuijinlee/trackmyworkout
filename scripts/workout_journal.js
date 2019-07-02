@@ -235,12 +235,9 @@ class workoutJournal {
 
 
 	getDataFromServer = () => {
+		debugger;
 		let tbody = $("#displayArea");
 
-		if (tbody.children().length == 0) {
-			let emptyDiv = $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
-			tbody.append(emptyDiv);
-		}
 		$.ajax({
 			url: 'public/api/get_exercise.php',
 			dataType: 'json',
@@ -260,6 +257,10 @@ class workoutJournal {
 				journal.displayAllExercises();
 			}
 		});
+		if (tbody.children().length == 0) {
+			let emptyDiv = $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
+			tbody.append(emptyDiv);
+		}
 	}
 
 	getSpecificDate = (date) => {
