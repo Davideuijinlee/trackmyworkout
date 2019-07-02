@@ -481,6 +481,7 @@ class workoutJournal {
 				$(this).attr('original_entry', $(this).html());
 			});
 		});
+		this.displayAllExercises();
 	}
 
 	cancelDelete = () => {
