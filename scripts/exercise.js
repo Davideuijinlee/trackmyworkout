@@ -78,10 +78,10 @@ class Exercise{
 
         this.deletePerm(this.data.id)
         this.domElements.row.remove();
-        // if (tbody.children().length == 0) {
-		// 	let emptyDiv = $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
-		// 	tbody.append(emptyDiv);
-		// }
+        if (tbody.children().length == 0) {
+			let emptyDiv = $('<div>').addClass('emptyTableMsg').text('There are currently no exercises')
+			tbody.append(emptyDiv);
+		}
     }
 
     denyDeleteExercise=()=>{

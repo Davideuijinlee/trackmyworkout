@@ -68,14 +68,14 @@ class workoutJournal {
 			})
 			return;
 		} else {
+			$('emptyTableMsg').remove();
 			this.createExerciseForm(this.exerciseName, this.exerciseSets, this.exerciseReps, this.exerciseWeight, this.exerciseRest);
 		}
 	}
 
 	displayAllExercises() {
 		let tbody = $("#displayArea");
-
-		$('#displayArea').empty();
+		tbody.empty();
 		
 		for (let id in this.data) {
 			let exerciseRow = this.data[id].render();
