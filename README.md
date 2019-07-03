@@ -1,7 +1,7 @@
 
-# Run Tracker
+# Track My Workout
 
-> A mobile-responsive run-tracking application that captures real-time data to assist the user in becoming a better runner.
+> A minimalistic workout journal application that captures real-time data to assist the user in becoming a better lifter.
 >
 
 ### Website
@@ -18,9 +18,7 @@
 >    - Set root directory of server to the `public` folder of this project
 >    - Set Apache port to `8000`
 >    - Use phpMyAdmin (or similar) to create a database
-> 1. Start dev server
->    - `npm start`
-> 1. Open a browser and navigate to `localhost:3000`
+> 1. Open a browser and navigate to `localhost:8000`
 
 ### Technologies Used
 > - HTML5
