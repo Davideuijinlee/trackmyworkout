@@ -68,7 +68,7 @@ class workoutJournal {
 			})
 			return;
 		} else {
-			$('emptyTableMsg').remove();
+			$('emptyTableMsg').remove();	
 			this.createExerciseForm(this.exerciseName, this.exerciseSets, this.exerciseReps, this.exerciseWeight, this.exerciseRest);
 		}
 	}

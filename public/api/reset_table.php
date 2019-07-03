@@ -17,9 +17,9 @@ $delete_item_result = mysqli_query($conn, $delete_item_query);
 if(!$delete_item_result){
     throw new Exception(mysqli_error($conn));
 }
-if(mysqli_affected_rows($conn) === 0){
-    throw new Exception('Failed to delete item');
-}
+// if(mysqli_num_rows($conn) === 0){
+//     throw new Exception('Failed to delete item');
+// }
 
 $output = [
     'success' => true,
