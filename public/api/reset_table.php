@@ -10,7 +10,7 @@ $output = [
 
 // $id = (int)$_POST['id'];
 
-$delete_item_query = "TRUNCATE TABLE `exercises`";
+$delete_item_query = "DELETE * FROM `exercises`";
 
 $delete_item_result = mysqli_query($conn, $delete_item_query);
 
